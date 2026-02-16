@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard - SkillSwap</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 p-10">
+
+<h1 class="text-3xl font-bold mb-8">User Dashboard</h1>
+
+<div class="grid md:grid-cols-3 gap-6">
+
+  <div class="bg-white p-6 rounded shadow">
+    <h2 class="font-semibold text-lg">Skills Posted</h2>
+    <p class="text-3xl mt-4">5</p>
+  </div>
+
+  <div class="bg-white p-6 rounded shadow">
+    <h2 class="font-semibold text-lg">Requests Received</h2>
+    <p class="text-3xl mt-4">3</p>
+  </div>
+
+  <div class="bg-white p-6 rounded shadow">
+    <h2 class="font-semibold text-lg">Skills Learned</h2>
+    <p class="text-3xl mt-4">2</p>
+  </div>
+
+</div>
+
+<!-- Graph Section -->
+<div class="bg-white mt-10 p-8 rounded shadow">
+  <h2 class="text-xl font-semibold mb-6">Daily Learning Performance</h2>
+  <canvas id="performanceChart"></canvas>
+</div>
+
+<script>
+const ctx = document.getElementById('performanceChart');
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+    datasets: [{
+      label: 'Hours Learned',
+      data: [1, 2, 1.5, 3, 2, 4, 2.5],
+      borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true
+  }
+});
+</script>
+
+</body>
+</html>

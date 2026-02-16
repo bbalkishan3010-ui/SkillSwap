@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Join - SkillSwap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex justify-center items-center h-screen">
+
+<div class="bg-white p-10 rounded shadow w-96">
+    <h2 class="text-2xl font-bold mb-6 text-center">Create Account</h2>
+
+    <input id="name" type="text" placeholder="Full Name"
+ class="w-full mb-4 px-4 py-2 border rounded">
+
+<input id="email" type="email" placeholder="Email"
+ class="w-full mb-4 px-4 py-2 border rounded">
+
+<input id="password" type="password" placeholder="Password"
+ class="w-full mb-6 px-4 py-2 border rounded">
+
+<button id="joinBtn"
+ class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
+ Join Now
+</button>
+</div>
+
+<!-- 🔥 ADD FIREBASE SCRIPT HERE (BOTTOM OF BODY) -->
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDVUlfcsdVBeXjRun6fp3XUanh3gCHRvjM",
+    authDomain: "skillswap-293e6.firebaseapp.com",
+    projectId: "skillswap-293e6",
+    storageBucket: "skillswap-293e6.firebasestorage.app",
+    messagingSenderId: "560956605074",
+    appId: "1:560956605074:web:37da59f865256f83805c4b"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  document.getElementById("joinBtn").addEventListener("click", () => {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    alert("Account created successfully!");
+    window.location.href = "dashboard.html"; // 👈 REDIRECT HERE
+  })
+  .catch((error) => {
+    alert(error.message);
+  });
+});
+</script>
+
+</body>
+</html>
